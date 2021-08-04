@@ -1,4 +1,4 @@
-package br.com.mercadolivre.config.validacao;
+package br.com.mercadolivre.config.handler;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;

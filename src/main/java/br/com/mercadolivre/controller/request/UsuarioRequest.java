@@ -1,5 +1,6 @@
 package br.com.mercadolivre.controller.request;
 
+import br.com.mercadolivre.config.validator.UniqueValue;
 import br.com.mercadolivre.domain.modelo.Usuario;
 import org.hibernate.validator.constraints.Length;
 
@@ -10,6 +11,7 @@ public class UsuarioRequest {
 
     @NotBlank
     @Email
+    @UniqueValue(domainClass = Usuario.class, fieldName = "email")
     private final String email;
     @NotBlank @Length(min = 6)
     private final String senha;

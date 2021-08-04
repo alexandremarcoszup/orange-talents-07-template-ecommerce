@@ -1,4 +1,4 @@
-package br.com.mercadolivre.config.validacao;
+package br.com.mercadolivre.config.handler;
 
 public class ErroDeRequestDTO {
     private String campo;
