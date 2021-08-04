@@ -1,4 +1,4 @@
-package br.com.mercadolivre.mercadolivre;
+package br.com.mercadolivre;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
