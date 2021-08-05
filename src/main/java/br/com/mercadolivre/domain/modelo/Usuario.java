@@ -35,6 +35,7 @@ public class Usuario implements UserDetails {
         this.horaRegistro = LocalDateTime.now();
     }
 
+    @Deprecated
     public Usuario(){}
 
     public UsuarioResponse domainToResponse(){

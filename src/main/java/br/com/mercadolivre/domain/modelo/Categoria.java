@@ -17,6 +17,7 @@ public class Categoria {
     @ManyToOne
     private Categoria categoriaMae;
 
+    @Deprecated
     public Categoria(){}
 
     public Categoria(String nome) {
