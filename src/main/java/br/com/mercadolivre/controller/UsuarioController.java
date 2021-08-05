@@ -1,5 +1,6 @@
 package br.com.mercadolivre.controller;
 
+import br.com.mercadolivre.config.security.SenhaEncoder;
 import br.com.mercadolivre.controller.request.UsuarioRequest;
 import br.com.mercadolivre.controller.response.UsuarioResponse;
 import br.com.mercadolivre.domain.modelo.Usuario;
@@ -17,15 +18,17 @@ import javax.validation.Valid;
 public class UsuarioController {
 
     private final UsuarioRepository usuarioRepository;
+    private final SenhaEncoder senhaEncoder;
 
-    public UsuarioController(UsuarioRepository usuarioRepository){
+    public UsuarioController(UsuarioRepository usuarioRepository, SenhaEncoder senhaEncoder){
         this.usuarioRepository = usuarioRepository;
+        this.senhaEncoder = senhaEncoder;
     }
 
     @PostMapping
     public ResponseEntity<UsuarioResponse> cadastroUsuario(@RequestBody @Valid UsuarioRequest request){
 
-        Usuario usuario = usuarioRepository.save(request.requestToDomain());
+        Usuario usuario = usuarioRepository.save(request.requestToDomain(senhaEncoder));
 
         return ResponseEntity.ok(usuario.domainToResponse());
     }

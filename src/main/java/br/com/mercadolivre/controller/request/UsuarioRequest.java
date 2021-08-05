@@ -1,5 +1,6 @@
 package br.com.mercadolivre.controller.request;
 
+import br.com.mercadolivre.config.security.SenhaEncoder;
 import br.com.mercadolivre.config.validator.UniqueValue;
 import br.com.mercadolivre.domain.modelo.Usuario;
 import org.hibernate.validator.constraints.Length;
@@ -21,7 +22,7 @@ public class UsuarioRequest {
         this.senha = senha;
     }
 
-    public Usuario requestToDomain(){
-        return new Usuario(this.email, this.senha);
+    public Usuario requestToDomain(SenhaEncoder senhaEncoder){
+        return new Usuario(this.email, senhaEncoder.encode(this.senha));
     }
 }
