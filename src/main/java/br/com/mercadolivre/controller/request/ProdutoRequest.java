@@ -24,7 +24,7 @@ public class ProdutoRequest {
 
     @NotNull
     @PositiveOrZero
-    private int quantidade;
+    private Integer quantidade;
 
     @NotBlank
     @Length(max = 1000)
@@ -37,7 +37,7 @@ public class ProdutoRequest {
     @ExistsId(domainClass = Categoria.class, fieldName = "id")
     private Long idCategoria;
 
-    public ProdutoRequest(@NotBlank String nome, @NotNull BigDecimal valor, @NotNull int quantidade, @NotBlank String descricao,
+    public ProdutoRequest(@NotBlank String nome, @NotNull BigDecimal valor, @NotNull Integer quantidade, @NotBlank String descricao,
                           @Size(min = 3) List<CaracteristicaRequest> caracteristicas, @NotBlank Long idCategoria) {
         this.nome = nome;
         this.valor = valor;
