@@ -19,13 +19,16 @@ public class ProdutoResponse {
 
     private CategoriaResponse categoria;
 
-    public ProdutoResponse(Long id, String s, String nome, BigDecimal valor, int quantidade, String descricao, Set<CaracteristicaResponse> caracteristica, CategoriaResponse categoria) {
+    private Set<ImagemResponse> imagens;
+
+    public ProdutoResponse(Long id, String s, String nome, BigDecimal valor, int quantidade, String descricao,
+                           Set<CaracteristicaResponse> caracteristicas, CategoriaResponse categoria) {
         this.id = id;
         this.nome = nome;
         this.valor = valor;
         this.quantidade = quantidade;
         this.descricao = descricao;
-        this.caracteristica = caracteristica;
+        this.caracteristica = caracteristicas;
         this.categoria = categoria;
     }
 
@@ -55,5 +58,13 @@ public class ProdutoResponse {
 
     public CategoriaResponse getCategoria() {
         return categoria;
+    }
+
+    public Set<ImagemResponse> getImagens() {
+        return imagens;
+    }
+
+    public void setImagens(Set<ImagemResponse> imagens) {
+        this.imagens = imagens;
     }
 }

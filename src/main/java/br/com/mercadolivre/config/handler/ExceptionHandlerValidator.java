@@ -33,4 +33,14 @@ public class ExceptionHandlerValidator {
 
         return dto;
     }
+
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(DupliquedArgumentsException.class)
+    private List<ErroDeRequestDTO> handle(DupliquedArgumentsException exception) {
+        List<ErroDeRequestDTO> dto = new ArrayList<>();
+
+        dto.add(new ErroDeRequestDTO(exception.getElement(),exception.getMessage()));
+
+        return dto;
+    }
 }

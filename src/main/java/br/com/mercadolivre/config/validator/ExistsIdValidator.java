@@ -7,8 +7,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import javax.validation.constraintvalidation.SupportedValidationTarget;
+import javax.validation.constraintvalidation.ValidationTarget;
 import java.util.List;
 
+@SupportedValidationTarget(ValidationTarget.PARAMETERS)
 public class ExistsIdValidator implements ConstraintValidator<ExistsId, Object> {
 
     private String domainAttribute;

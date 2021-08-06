@@ -3,6 +3,7 @@ package br.com.mercadolivre.controller.request;
 import br.com.mercadolivre.config.validator.ExistsId;
 import br.com.mercadolivre.domain.modelo.Categoria;
 import br.com.mercadolivre.domain.modelo.Produto;
+import br.com.mercadolivre.domain.modelo.Usuario;
 import br.com.mercadolivre.domain.repository.CategoriaRepository;
 import org.hibernate.validator.constraints.Length;
 
@@ -47,11 +48,11 @@ public class ProdutoRequest {
         this.caracteristicas.addAll(caracteristicas);
     }
 
-    public Produto requestToDomain(CategoriaRepository categoriaRepository) {
+    public Produto requestToDomain(CategoriaRepository categoriaRepository, Usuario usuario) {
         Optional<Categoria> categoria = categoriaRepository.findById(this.idCategoria);
 
         return new Produto(this.nome, this.valor, this.quantidade, this.descricao, categoria.get(),
-                this.caracteristicas);
+                this.caracteristicas, usuario);
     }
 
     public HashSet<String> buscaCaracteristicasIguais() {
