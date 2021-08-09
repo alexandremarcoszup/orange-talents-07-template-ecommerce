@@ -30,7 +30,7 @@ public class PeruntaController {
     }
 
     @PostMapping("/{id}/pergunta")
-    public ResponseEntity<?> postaPergunta(@AuthenticationPrincipal Object usuarioLogado, @PathVariable Long idProduto,
+    public ResponseEntity<?> postaPergunta(@AuthenticationPrincipal Object usuarioLogado, @PathVariable("id") Long idProduto,
                                            @RequestBody PerguntaRequest perguntaRequest) {
 
         Usuario usuario = (Usuario) ((Optional) usuarioLogado).get();
