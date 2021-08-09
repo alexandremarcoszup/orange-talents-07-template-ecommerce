@@ -1,5 +1,6 @@
-package br.com.mercadolivre.integracao;
+package br.com.mercadolivre.integracao.impl;
 
+import br.com.mercadolivre.integracao.UploaderImage;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,6 +1,8 @@
-package br.com.mercadolivre.integracao;
+package br.com.mercadolivre.service.impl;
 
 import br.com.mercadolivre.domain.modelo.Pergunta;
+import br.com.mercadolivre.integracao.MailSender;
+import br.com.mercadolivre.service.EmailSender;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;

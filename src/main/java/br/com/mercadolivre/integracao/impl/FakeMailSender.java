@@ -1,11 +1,12 @@
-package br.com.mercadolivre.integracao;
+package br.com.mercadolivre.integracao.impl;
 
+import br.com.mercadolivre.integracao.MailSender;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
 @Primary
-public class FakeMailSender implements MailSender{
+public class FakeMailSender implements MailSender {
 
     @Override
     public void send(String body, String subject, String nameFrom, String from, String to) {

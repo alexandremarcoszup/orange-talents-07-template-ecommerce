@@ -6,7 +6,7 @@ import br.com.mercadolivre.domain.modelo.Produto;
 import br.com.mercadolivre.domain.modelo.Usuario;
 import br.com.mercadolivre.domain.repository.PerguntaRepository;
 import br.com.mercadolivre.domain.repository.ProdutoRepository;
-import br.com.mercadolivre.integracao.EmailSender;
+import br.com.mercadolivre.service.EmailSender;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

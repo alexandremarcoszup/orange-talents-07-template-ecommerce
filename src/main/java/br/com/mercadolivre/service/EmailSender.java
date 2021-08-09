@@ -1,4 +1,4 @@
-package br.com.mercadolivre.integracao;
+package br.com.mercadolivre.service;
 
 import br.com.mercadolivre.domain.modelo.Pergunta;
 
