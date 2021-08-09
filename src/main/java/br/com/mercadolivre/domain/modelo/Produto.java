@@ -81,4 +81,8 @@ public class Produto {
     public boolean pertenceAoDono(Optional<Usuario> dono){
         return this.usuario.equals(dono.get());
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
 }

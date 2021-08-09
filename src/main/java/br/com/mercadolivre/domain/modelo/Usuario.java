@@ -94,4 +94,8 @@ public class Usuario implements UserDetails {
     public int hashCode() {
         return Objects.hash(id, email, senha, horaRegistro, perfis);
     }
+
+    public String getEmail() {
+        return email;
+    }
 }
