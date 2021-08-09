@@ -62,7 +62,7 @@ public class ProdutoController {
         Optional<Produto> produto = produtoRepository.findById(idProduto);
 
         if (produto.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Produto não existente");
         }
         if (produto.get().pertenceAoDono(dono)){
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);

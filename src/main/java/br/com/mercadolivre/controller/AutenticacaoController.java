@@ -33,7 +33,6 @@ public class AutenticacaoController {
 
         UsernamePasswordAuthenticationToken dadoslogin = loginRequest.converter();
 
-
         try {
             Authentication authentication = authenticationManager.authenticate(dadoslogin);
             String token = tokenService.gerarToken(authentication);
