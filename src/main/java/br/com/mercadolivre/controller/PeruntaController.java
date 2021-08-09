@@ -13,6 +13,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
@@ -31,7 +32,7 @@ public class PeruntaController {
 
     @PostMapping("/{id}/pergunta")
     public ResponseEntity<?> postaPergunta(@AuthenticationPrincipal Object usuarioLogado, @PathVariable("id") Long idProduto,
-                                           @RequestBody PerguntaRequest perguntaRequest) {
+                                           @RequestBody @Valid PerguntaRequest perguntaRequest) {
 
         Usuario usuario = (Usuario) ((Optional) usuarioLogado).get();
 
