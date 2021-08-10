@@ -82,20 +82,20 @@ public class Usuario implements UserDetails {
         return true;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
-        return Objects.equals(id, usuario.id) && Objects.equals(email, usuario.email) && Objects.equals(senha, usuario.senha) && Objects.equals(horaRegistro, usuario.horaRegistro) && Objects.equals(perfis, usuario.perfis);
+        return Objects.equals(email, usuario.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, email, senha, horaRegistro, perfis);
-    }
-
-    public String getEmail() {
-        return email;
+        return Objects.hash(email);
     }
 }

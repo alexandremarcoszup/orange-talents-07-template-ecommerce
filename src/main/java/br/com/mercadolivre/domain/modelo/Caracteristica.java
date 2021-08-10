@@ -1,5 +1,6 @@
 package br.com.mercadolivre.domain.modelo;
 
+import br.com.mercadolivre.controller.response.CaracteristicaDetalheResponse;
 import br.com.mercadolivre.controller.response.CaracteristicaResponse;
 
 import javax.persistence.*;
@@ -35,5 +36,9 @@ public class Caracteristica {
 
     public CaracteristicaResponse domainToResponse(){
         return new CaracteristicaResponse(this.id, this.nome, this.descricao);
+    }
+
+    public CaracteristicaDetalheResponse domainToDetalheResponse(){
+        return new CaracteristicaDetalheResponse(this.nome, this.descricao);
     }
 }

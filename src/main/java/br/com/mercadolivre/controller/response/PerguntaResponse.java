@@ -8,18 +8,15 @@ public class PerguntaResponse {
 
     private String titulo;
 
-    private String descricao;
-
     private LocalDateTime horaRegistro;
 
     private ProdutoResponse produto;
 
     private UsuarioResponse usuarioInteressado;
 
-    public PerguntaResponse(Long id, String titulo, String descricao, LocalDateTime horaRegistro, ProdutoResponse produto, UsuarioResponse usuarioInteressado) {
+    public PerguntaResponse(Long id, String titulo, LocalDateTime horaRegistro, ProdutoResponse produto, UsuarioResponse usuarioInteressado) {
         this.id = id;
         this.titulo = titulo;
-        this.descricao = descricao;
         this.horaRegistro = horaRegistro;
         this.produto = produto;
         this.usuarioInteressado = usuarioInteressado;
@@ -31,10 +28,6 @@ public class PerguntaResponse {
 
     public String getTitulo() {
         return titulo;
-    }
-
-    public String getDescricao() {
-        return descricao;
     }
 
     public LocalDateTime getHoraRegistro() {

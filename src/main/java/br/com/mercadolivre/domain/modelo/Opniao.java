@@ -40,4 +40,16 @@ public class Opniao {
     public OpniaoResponse domainToResponse(){
         return new OpniaoResponse(this.id, this.titulo, this.descricao, this.usuario.domainToResponse(), this.produto.domainToReponse());
     }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public Short getNota() {
+        return nota;
+    }
 }

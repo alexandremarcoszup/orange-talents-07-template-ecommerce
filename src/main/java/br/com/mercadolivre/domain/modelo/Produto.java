@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Entity
@@ -46,6 +47,13 @@ public class Produto {
 
     @OneToMany(mappedBy = "produto", cascade = CascadeType.MERGE)
     private Set<ImagensProduto> imagens = new HashSet<>();
+
+    @OneToMany(mappedBy = "produto")
+    @OrderBy("titulo asc")
+    private SortedSet<Pergunta> perguntas =  new TreeSet<>();
+
+    @OneToMany(mappedBy = "produto")
+    private Set<Opniao> opnioes = new HashSet<>();
 
     @Deprecated
     public Produto() {
@@ -84,5 +92,33 @@ public class Produto {
 
     public Usuario getUsuario() {
         return usuario;
+    }
+
+    public <T> Set<T> mapCaracteristicas(Function<Caracteristica, T> funcao){
+        return this.caracteristicas.stream().map(funcao).collect(Collectors.toSet());
+    }
+
+    public <T> Set<T> mapImagens(Function<ImagensProduto, T> funcao){
+        return this.imagens.stream().map(funcao).collect(Collectors.toSet());
+    }
+
+    public <T extends Comparable<T>> SortedSet<T> mapPerguntas(Function<Pergunta, T> funcao) {
+        return this.perguntas.stream().map(funcao).collect(Collectors.toCollection(TreeSet::new));
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public Opnioes getOpnioes(){
+        return new Opnioes(this.opnioes);
     }
 }

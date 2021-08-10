@@ -3,6 +3,7 @@ package br.com.mercadolivre.controller;
 import br.com.mercadolivre.config.validator.ValidaCaracteristicasiguais;
 import br.com.mercadolivre.controller.request.ImagemProdutoRequest;
 import br.com.mercadolivre.controller.request.ProdutoRequest;
+import br.com.mercadolivre.controller.response.DetalhaProdutoResponse;
 import br.com.mercadolivre.controller.response.ProdutoResponse;
 import br.com.mercadolivre.domain.modelo.Produto;
 import br.com.mercadolivre.domain.modelo.Usuario;
@@ -72,5 +73,18 @@ public class ProdutoController {
         produtoRepository.save(produto.get());
 
         return ResponseEntity.ok(produto.get().domainToReponse());
+    }
+
+    @GetMapping("/detalha/{id}")
+    public ResponseEntity<?> detalhaProduto(@PathVariable("id") Long idProduto){
+
+        Optional<Produto> produto = produtoRepository.findById(idProduto);
+
+        if (produto.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Produto não existente");
+        }
+
+
+        return ResponseEntity.ok(new DetalhaProdutoResponse(produto.get()));
     }
 }

@@ -29,4 +29,8 @@ public class ImagensProduto {
     public ImagemResponse domainToResponse(){
         return new ImagemResponse(this.id, this.link);
     }
+
+    public String getLink() {
+        return link;
+    }
 }
