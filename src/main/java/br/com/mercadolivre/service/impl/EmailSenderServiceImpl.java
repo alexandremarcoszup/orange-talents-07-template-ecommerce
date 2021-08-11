@@ -1,19 +1,20 @@
 package br.com.mercadolivre.service.impl;
 
+import br.com.mercadolivre.domain.modelo.Compra;
 import br.com.mercadolivre.domain.modelo.Pergunta;
 import br.com.mercadolivre.integracao.MailSender;
-import br.com.mercadolivre.service.EmailSender;
+import br.com.mercadolivre.service.EmailSenderService;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Service
-public class EmailSenderImpl implements EmailSender {
+public class EmailSenderServiceImpl implements EmailSenderService {
 
     private MailSender mailSender;
 
-    public EmailSenderImpl(MailSender mailSender) {
+    public EmailSenderServiceImpl(MailSender mailSender) {
         this.mailSender = mailSender;
     }
 
@@ -23,6 +24,13 @@ public class EmailSenderImpl implements EmailSender {
                 pergunta.getEmailDonoProduto(), pergunta.getEmailPessoaInteressada());
     }
 
+    @Override
+    public void sendEmailCompra(Compra compra) {
+        mailSender.send("<html>...algo brabo...</html>", "Status da compra: "+compra.getStatusCompra().toString(),
+                compra.getEmailComprador(),
+                compra.getEmailDono(),
+                compra.getEmailComprador());
+    }
 
 
 }

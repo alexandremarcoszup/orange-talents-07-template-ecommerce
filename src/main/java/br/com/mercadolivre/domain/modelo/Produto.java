@@ -121,4 +121,13 @@ public class Produto {
     public Opnioes getOpnioes(){
         return new Opnioes(this.opnioes);
     }
+
+    public boolean abateCompras(Integer quantidade) {
+        Assert.isTrue(quantidade > 0, "Não possui quantidade suficiente");
+        if (quantidade <= this.quantidade){
+            this.quantidade -= quantidade;
+            return true;
+        }
+        return false;
+    }
 }

@@ -1,17 +1,15 @@
 package br.com.mercadolivre.config.validator;
 
-import org.springframework.util.Assert;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import javax.validation.constraintvalidation.SupportedValidationTarget;
-import javax.validation.constraintvalidation.ValidationTarget;
 import java.util.List;
 
-@SupportedValidationTarget(ValidationTarget.PARAMETERS)
 public class ExistsIdValidator implements ConstraintValidator<ExistsId, Object> {
 
     private String domainAttribute;
@@ -32,8 +30,8 @@ public class ExistsIdValidator implements ConstraintValidator<ExistsId, Object> 
         Query query = entityManager.createQuery("SELECT 1 FROM "+Klass.getName()+" where "+domainAttribute+"=:value");
         query.setParameter("value", value);
         List<?> list = query.getResultList();
-
-        Assert.state(list.size() == 1, "Não foi encontrado nenhum "+this.Klass.getName()+" com o id: "+domainAttribute);
+            if (!(list.size() == 1))
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi encontrado nenhum+ "+Klass.getName()+" com o id: "+value);
 
         return true;
     }

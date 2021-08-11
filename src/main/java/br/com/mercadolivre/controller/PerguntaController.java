@@ -1,12 +1,13 @@
 package br.com.mercadolivre.controller;
 
 import br.com.mercadolivre.controller.request.PerguntaRequest;
+import br.com.mercadolivre.controller.response.PerguntaResponse;
 import br.com.mercadolivre.domain.modelo.Pergunta;
 import br.com.mercadolivre.domain.modelo.Produto;
 import br.com.mercadolivre.domain.modelo.Usuario;
 import br.com.mercadolivre.domain.repository.PerguntaRepository;
 import br.com.mercadolivre.domain.repository.ProdutoRepository;
-import br.com.mercadolivre.service.EmailSender;
+import br.com.mercadolivre.service.EmailSenderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,21 +19,21 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/produto")
-public class PeruntaController {
+public class PerguntaController {
 
     private ProdutoRepository produtoRepository;
     private PerguntaRepository perguntaRepository;
-    private EmailSender emailSender;
+    private EmailSenderService emailSenderService;
 
-    public PeruntaController(ProdutoRepository produtoRepository, PerguntaRepository perguntaRepository, EmailSender emailSender) {
+    public PerguntaController(ProdutoRepository produtoRepository, PerguntaRepository perguntaRepository, EmailSenderService emailSenderService) {
         this.produtoRepository = produtoRepository;
         this.perguntaRepository = perguntaRepository;
-        this.emailSender = emailSender;
+        this.emailSenderService = emailSenderService;
     }
 
     @PostMapping("/{id}/pergunta")
-    public ResponseEntity<?> postaPergunta(@AuthenticationPrincipal Object usuarioLogado, @PathVariable("id") Long idProduto,
-                                           @RequestBody @Valid PerguntaRequest perguntaRequest) {
+    public ResponseEntity<PerguntaResponse> postaPergunta(@AuthenticationPrincipal Object usuarioLogado, @PathVariable("id") Long idProduto,
+                                                          @RequestBody @Valid PerguntaRequest perguntaRequest) {
 
         Usuario usuario = (Usuario) ((Optional) usuarioLogado).get();
 
@@ -43,7 +44,7 @@ public class PeruntaController {
         }
 
         Pergunta pergunta = perguntaRepository.save(perguntaRequest.requestToDomain(usuario, produto.get()));
-        emailSender.sendEmailPergunta(pergunta);
+        emailSenderService.sendEmailPergunta(pergunta);
 
         return ResponseEntity.ok(pergunta.domainToResponse());
     }

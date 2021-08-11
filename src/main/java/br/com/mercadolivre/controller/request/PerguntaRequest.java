@@ -11,11 +11,13 @@ public class PerguntaRequest {
     @NotBlank
     private String titulo;
 
-    public PerguntaRequest(@NotBlank String titulo) {
-        this.titulo = titulo;
-    }
+    public PerguntaRequest(){}
 
     public Pergunta requestToDomain(Usuario usuarioInteressado, Produto produto){
         return new Pergunta(this.titulo, produto, usuarioInteressado);
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 }
