@@ -27,7 +27,8 @@ public class CompraController {
     private EmailSenderService emailService;
     private CompraRepository compraRepository;
 
-    public CompraController(ProdutoRepository produtoRepository, EmailSenderService emailService, CompraRepository compraRepository) {
+    public CompraController(ProdutoRepository produtoRepository, EmailSenderService emailService,
+                            CompraRepository compraRepository) {
         this.produtoRepository = produtoRepository;
         this.emailService = emailService;
         this.compraRepository = compraRepository;
@@ -53,4 +54,5 @@ public class CompraController {
 
         throw new BindException("Não existe quantidade suficiente para fazer a compra.");
     }
+
 }

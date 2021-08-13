@@ -1,6 +1,8 @@
 package br.com.mercadolivre.controller.request;
 
 import br.com.mercadolivre.config.validator.ExistsId;
+import br.com.mercadolivre.domain.enums.GatewayDePagamento;
+import br.com.mercadolivre.domain.enums.StatusCompra;
 import br.com.mercadolivre.domain.modelo.*;
 
 import javax.validation.constraints.NotBlank;

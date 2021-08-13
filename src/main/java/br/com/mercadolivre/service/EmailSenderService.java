@@ -8,4 +8,6 @@ public interface EmailSenderService {
     void sendEmailPergunta(Pergunta pergunta);
 
     void sendEmailCompra(Compra compra);
+
+    void sendEmailFinalizacaoCompra(Compra compra);
 }

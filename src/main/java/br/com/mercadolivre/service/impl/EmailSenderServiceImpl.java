@@ -32,5 +32,13 @@ public class EmailSenderServiceImpl implements EmailSenderService {
                 compra.getEmailComprador());
     }
 
+    @Override
+    public void sendEmailFinalizacaoCompra(Compra compra) {
+        mailSender.send("<html>...algo brabo...</html>", "Status do pagamento: "+compra.getStatusCompra().toString(),
+                compra.getEmailComprador(),
+                compra.getEmailDono(),
+                compra.getEmailComprador());
+    }
+
 
 }

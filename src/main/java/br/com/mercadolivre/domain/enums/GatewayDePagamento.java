@@ -1,4 +1,4 @@
-package br.com.mercadolivre.domain.modelo;
+package br.com.mercadolivre.domain.enums;
 
 import org.springframework.web.util.UriComponentsBuilder;
 
